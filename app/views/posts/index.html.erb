@@ -1,0 +1,69 @@
+<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <% @posts.each do |post| %>
+    <li data-target="#carousel-example-generic<%= " active" if post == @posts.first %>">
+    <% end %>
+  </ol>
+
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner" role="listbox">
+    <% @posts.each do |post| %>
+      <div class="item<%= " active" if post == @posts.first %>">
+        <%= image_tag(post.image) %>
+        <div class="carousel-caption">
+          <%= image_tag('waddle.png', :id => 'waddle_logo') %>
+          <h2>| stories beyond reviews |</h2>
+          <br>
+          <%= link_to 'Send Your Story', new_post_path, class: 'btn btn-warning btn-lg' %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<div class="container">
+  <div id="posts" class="transitions-enabled">
+    <% @posts.each do |post| %>
+      <div class="box panel panel-default">
+        <%= link_to image_tag(post.image.url(:medium)), post %>
+        <div class="panel-body">
+          <p><%= post.title %></p>
+          <p><strong><%= post.subtitle %></strong></p>
+          <p><%= truncate(strip_tags(post.body), length: 80)%></p>
+          <%= link_to 'Continue Reading', post %>
+          <div class="actions">
+            <%= link_to edit_post_path(post) do %>
+              <span class="glyphicon glyphicon-edit"></span>
+              Edit
+            <% end %>
+            <%= link_to post, method: :delete, data: { confirm: 'Are you sure?' } do %>
+              <span class="glyphicon glyphicon-trash"></span>
+              Delete
+            <% end %>
+          </div>
+          <%= post.published_at %>
+        </div>
+        <div class="panel-footer">
+
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<script type='text/javascript'>
+(function()
+{
+ if( window.localStorage )
+ {
+   if( !localStorage.getItem('firstLoad') )
+   {
+     localStorage['firstLoad'] = true;
+     window.location.reload();
+   }
+   else
+     localStorage.removeItem('firstLoad');
+ }
+})();
+ </script>

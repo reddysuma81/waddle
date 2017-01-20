@@ -1,0 +1,15 @@
+nav {
+  margin : 0 !important;
+}
+
+a.carousel-control.left, a.carousel-control.right {
+  background: transparent;
+}
+
+.carousel-inner > .item, .carousel-inner > .item > img.scale {
+  max-height: 400px;
+}
+
+#waddle_logo {
+  width: 300px;
+}
