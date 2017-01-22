@@ -35,6 +35,10 @@ gem 'bootstrap-sass'
 gem 'masonry-rails'
 gem 'paperclip'
 
+# User authentication
+gem 'devise'
+gem 'rails_admin'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
