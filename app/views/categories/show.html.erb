@@ -1,0 +1,11 @@
+<div class="container">
+  <h1>Posts by Category:</h1>
+  <p>
+    <strong><%= @category.name %></strong>
+  </p>
+  <p>
+    <% @category.posts.each do |restaurant| %>
+      <%= link_to post.name, post_path(post) %>
+    <% end %>
+  </p>
+</div>

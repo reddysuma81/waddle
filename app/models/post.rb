@@ -1,6 +1,22 @@
-class Post < ApplicationRecord
-  has_attached_file :image, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
-  validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
+# == Schema Information
+#
+# Table name: posts
+#
+#  id           :integer          not null, primary key
+#  header       :string
+#  tag_line     :string
+#  image        :string
+#  body         :text
+#  published_at :datetime
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#  state        :string           default("unpublished")
+#  user_id      :integer
+#
 
+class Post < ApplicationRecord
   has_and_belongs_to_many :categories
+  belongs_to :user
+
+  mount_uploader :image, ImageUploader
 end

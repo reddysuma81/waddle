@@ -1,8 +1,12 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_post, only: [:edit, :update, :destroy]
+  before_action :set_post, only: [:edit, :update, :destroy, :change]
+
+  respond_to :html
 
   def index
+    @unpublished = current_user.posts.where(state: "unpublished")
+    @published = current_user.posts.where(state: "published")
     @posts = Post.all
   end
 
@@ -39,12 +43,17 @@ class PostsController < ApplicationController
     redirect_to posts_url
   end
 
+  def change
+    @post.update_attributes(state: params[:state])
+    redirect_to posts_path
+  end
+
   private
     def set_post
       @post = Post.find(params[:id])
     end
 
     def post_params
-      params.require(:post).permit(:title, :subtitle, :body, :published_at, :image)
+      params.require(:post).permit(:header, :tag_line, :body, :published_at, :image, :state)
     end
 end
