@@ -25,5 +25,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
   has_many :posts
 
-  mount_uploader :avatar, AvatarUploader
+  mount_uploader :image, ImageUploader
 end
