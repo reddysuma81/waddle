@@ -10,6 +10,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :users, only: [:edit, :show, :update]
+
   resources :categories
 
   root 'home#index'

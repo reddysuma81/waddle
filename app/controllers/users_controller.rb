@@ -1,10 +1,13 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!, :except => [:show, :index]
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  load_and_authorize_resource
 
   def new
     @user = User.new
+  end
+
+  def show
+    @user = User.find(params[:id])
   end
 
   def edit
@@ -39,6 +42,6 @@ class UsersController < ApplicationController
     end
 
     def user_params
-      params.require(:user).permit(:first_name, :last_name, :email, :image)
+      params.require(:user).permit(:first_name, :last_name, :email, :bio, :image)
     end
 end

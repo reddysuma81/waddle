@@ -56,7 +56,6 @@ GEM
       sass (>= 3.3.4)
     builder (3.2.3)
     byebug (9.0.6)
-    cancancan (1.15.0)
     carrierwave (1.0.0)
       activemodel (>= 4.0.0)
       activesupport (>= 4.0.0)
@@ -231,7 +230,6 @@ DEPENDENCIES
   binding_of_caller
   bootstrap-sass
   byebug
-  cancancan
   carrierwave
   ckeditor
   coffee-rails (~> 4.2)

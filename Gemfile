@@ -28,7 +28,6 @@ gem 'ckeditor'
 # User authentication/authorization
 gem 'devise'
 gem 'rails_admin'
-gem 'cancancan'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
